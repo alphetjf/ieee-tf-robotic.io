@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .header {
@@ -36,13 +37,74 @@
             border-bottom: 3px solid var(--primary);
         }
 
-        h1, h2 {
+        /* 导航栏样式 */
+        nav {
+            background-color: var(--primary);
+            padding: 10px;
+            position: sticky; /* 使导航栏滚动时固定在顶部 */
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        h1,
+        h2 {
             color: var(--primary);
             margin-top: 0;
         }
 
+        .section {
+            scroll-margin-top: 80px; /* 为固定导航栏留出空间 */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #ddd; /* 添加分隔线 */
+            padding-bottom: 2rem;
+        }
+
         .leadership-section {
             margin: 2rem 0;
+            display: flex;
+            /* 使用 flex 布局 */
+            align-items: center;
+        }
+
+        .leadership-content {
+            flex: 1;
+            /* 内容占据一半空间 */
+        }
+
+        .leadership-bg {
+            flex: 1;
+            /* 背景图片占据一半空间 */
+            background-image: url('pic1.png'); /* 确保文件名和扩展名正确 */
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+            /* 设置最小高度 */
+            border-radius: 8px; /* 添加圆角 */
         }
 
         .member-section {
@@ -60,6 +122,11 @@
         .member-list li {
             padding: 0.5rem 0;
             border-bottom: 1px solid #eee;
+            transition: background-color 0.3s; /* 添加过渡效果 */
+        }
+
+        .member-list li:hover {
+            background-color: #f5f5f5; /* 添加悬停效果 */
         }
 
         .bullet-section {
@@ -80,112 +147,227 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s; /* 添加过渡效果 */
+        }
+
+        a:hover {
+            color: #004466; /* 添加悬停效果 */
+        }
+
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 10px;
+            background-color: var(--primary);
+            color: white;
         }
 
         @media (max-width: 768px) {
             .member-section {
                 columns: 1;
             }
-            
+
             .container {
                 padding: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .leadership-section {
+                flex-direction: column;
+            }
+
+            .leadership-bg {
+                width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#members">Members</a></li>
+            <!-- 交换 Scope 和 Mission 链接顺序 -->
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#scope">Scope</a></li>
+            <li><a href="#activities">Activities</a></li>
+        </ul>
+    </nav>
     <div class="container">
-        <div class="header">
+        <div id="home" class="header section">
             <h1>IEEE CIS ISATC Robotics Task Force</h1>
         </div>
 
         <!-- Leadership Section -->
-        <section class="leadership-section">
-            <h2>Leadership</h2>
-            <div class="member-list">
-                <div>
-                    <h3>Chair</h3>
-                    <p>Fei Zhou<br>
-                    China Electric Power Research Institute<br>
-                    <a href="mailto:zhoufei@epri.sgcc.com.cn">zhoufei@epri.sgcc.com.cn</a></p>
-                </div>
-                <div>
-                    <h3>Vice-Chairs</h3>
-                    <p>Xi Chen<br>
-                    GEIRI North America<br>
-                    <a href="mailto:xc@ieee.org">xc@ieee.org</a></p>
-                    
-                    <p>Wei Chen<br>
-                    Westlake University<br>
-                    <a href="mailto:chenwei06@westlake.edu.cn">chenwei06@westlake.edu.cn</a></p>
+        <section id="leadership" class="leadership-section section">
+            <div class="leadership-content">
+                <h2>Leadership</h2>
+                <div class="member-list">
+                    <div>
+                        <h3>Chair</h3>
+                        <p>Fei Zhou<br>
+                            China Electric Power Research Institute, China<br>
+                            <a href="mailto:zhoufei@epri.sgcc.com.cn">zhoufei@epri.sgcc.com.cn</a></p>
+                    </div>
+                    <div>
+                        <h3>Vice-Chairs</h3>
+                        <p>Kaoru Hirota<br>
+                            Tokyo Institute of Technology, Japan<br>
+                            <a href="mailto:hirota@jsps.org.cn">hirota@jsps.org.cn</a></p>
+
+                        <p>Wei Chen<br>
+                            Westlake University, China<br>
+                            <a href="mailto:chenwei06@westlake.edu.cn">chenwei06@westlake.edu.cn</a></p>
+
+                        <p>Xi Chen<br>
+                            GEIRI North America, USA<br>
+                            <a href="mailto:xc@ieee.org">xc@ieee.org</a></p>
+                    </div>
                 </div>
             </div>
+            <div class="leadership-bg" alt="Leadership Background Image"></div>
         </section>
 
         <!-- Members Section -->
-        <section>
+        <section id="members" class="section">
             <h2>Members</h2>
             <div class="member-section">
                 <ul class="member-list">
+                    <li>Aysegul Ucar, Firat University, Turkey</li>
                     <li>Chee Seng Chan, University of Malaya, Malaysia</li>
                     <li>Chu Kiong Loo, University of Malaya, Malaysia</li>
-                    <li>Hiroyuki Masuta, Toyama Prefectural University, Japan</li>
-                    <li>Naoki Masuyama, Osaka Prefecture University, Japan</li>
-                    <li>Ryad Chellali, Nanjing University of Technology, China</li>
-                    <li>Sung-Bae Cho, Yonsei University, Korea</li>
-                    <li>Richard J. Duro, Universidade da Coruña, Spain</li>
-                    <li>M. Reza Emami, University of Tronto, Canada</li>
-                    <li>Samir Garbaya, Arts et Metiers ParisTech, France</li>
                     <li>Dongbing Gu, University of Essex, UK</li>
-                    <li>Jason Gu, Dalhouise University, Canada</li>
-                    <li>Min Jiang, Xiamen University, China</li>
-                    <li>Zhaojie Ju, University of Portsmouth, UK</li>
-                    <li>Kyung-Joong Kim, Sejong University, Korea</li>
-                    <li>Kheng Lee Koay, University of Hertfordshire, UK</li>
-                    <li>Robert Kozma, University of Memphis, USA</li>
-                    <li>Naoyuki Kubota, Tokyo Metropolitan University, Japan</li>
-                    <li>Honghai Liu, University of Portsmouth, UK</li>
-                    <li>Qinggang Meng, Loughborough University, UK</li>
-                    <li>Tetsuya Ogata, Waseda University, Japan</li>
-                    <li>Kazuhiro Ohkura, Hiroshima Uiversity, Japan</li>
-                    <li>Paolo Remagnino, Kingston University London, UK</li>
-                    <li>Lakmal Seneviratne, King's College London, UK</li>
-                    <li>Georgy Sofronov, Macquarie University, Australia</li>
-                    <li>Simon X. Yang, University of Guelph, Canada</li>
-                    <li>Huiyu Zhou, Queen’s University Belfast, UK</li>
-                    <li>Aysegul Ucar, Firat University, Turkey</li>
-                    <li>Qing Wang, Equipment Department of State Grid Corporation of China, China</li>
-                    <li>Jianxin Li, Beihang University, China</li>
-                    <li>Guan Wang, Shanghai Jiao Tong University, China</li>
-                    <li>Wanyuan Wang, Southeast University, China</li>
                     <li>Feng Shan, Southeast University, China</li>
+                    <li>Georgy Sofronov, Macquarie University, Australia</li>
+                    <li>Guan Wang, Shanghai Jiao Tong University, China</li>
+                    <li>Honghai Liu, University of Portsmouth, UK</li>
+                    <li>Huiyu Zhou, Queen’s University Belfast, UK</li>
+                    <li>Jason Gu, Dalhouise University, Canada</li>
+                    <li>Jianxin Li, Beihang University, China</li>
+                    <li>Jian Li, State Grid Jibei Electric Power Co., Ltd, China</li>
+                    <li>Kheng Lee Koay, University of Hertfordshire, UK</li>
+                    <li>Kyung-Joong Kim, Sejong University, Korea</li>
+                    <li>M. Reza Emami, University of Tronto, Canada</li>
+                    <li>Min Jiang, Xiamen University, China</li>
+                    <li>Naoki Masuyama, Osaka Prefecture University, Japan</li>
+                    <li>Naoyuki Kubota, Tokyo Metropolitan University, Japan</li>
+                    <li>Simon X. Yang, University of Guelph, Canada</li>
+                    <li>Paolo Remagnino, Kingston University London, UK</li>
+                    <li>Qing Wang, State Grid Corporation of China Co., Ltd, China</li>
+                    <li>Richard J. Duro, Universidade da Coruña, Spain</li>
+                    <li>Ryad Chellali, Nanjing University of Technology, China</li>
+                    <li>Rui Xin, State Grid Hebei Electric Power Co., Ltd, China</li>
+                    <li>Samir Garbaya, Arts et Metiers ParisTech, France</li>
+                    <li>Sung-Bae Cho, Yonsei University, Korea</li>
+                    <li>Tetsuya Ogata, Waseda University, Japan</li>
+                    <li>Wanyuan Wang, Southeast University, China</li>
+                    <li>Wei Jiang, State Grid Digital Technology Holding Co.,Ltd, China</li>
+                    <li>Yong Deng, State Grid Fujian Electric Power Co., Ltd, China</li>
+                    <li>Zhaojie Ju, University of Portsmouth, UK</li>
+                    <li>Zhen Li, Beijing Institute of Technology, China</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Scope & Mission -->
-        <section class="bullet-section">
-            <h2>Scope & Mission</h2>
+        <!-- Mission Section -->
+        <section id="mission" class="bullet-section section">
+            <h2>Mission</h2>
             <ul>
-                <li>Promote new intelligence generated through robotic adaptation, learning and cognitive development</li>
-                <li>Key research directions:
-                    <ul>
-                        <li>Breakthroughs in human-robot collaboration technologies</li>
-                        <li>Intelligent algorithms (fuzzy computing, neural networks, evolutionary computation)</li>
-                        <li>Integration of IT, network technologies and robotics</li>
-                        <li>Structured processing of information and knowledge</li>
-                    </ul>
-                </li>
+                <li>Our working group aims to promote innovation, collaboration, and knowledge exchange in the field of robotics. We sincerely invite you to join our special task force and serve as a committee member.</li>
+                <li>In response to the urgent need for industry-wide intelligent upgrading, our working group focuses on the deep integration of computational intelligence and robotics technology, and reconstructs the development path of robots' autonomous cognition and collaboration capabilities.</li>
+                <li><strong>Our goal</strong>: By deeply coupling brain-inspired intelligent architectures with robotic systems, we aim to drive breakthroughs in next-generation robotics technologies with domain-specific expertise, focusing on three major scenarios: autonomous equipment inspection, human-robot collaborative control, and operations in high-risk environments.</li>
             </ul>
         </section>
 
+        <!-- Scope Section -->
+        <section id="scope" class="bullet-section section">
+            <h2>Scope</h2>
+            <ol>
+                <li>
+                    <strong>Innovation from a Theoretical Perspective</strong>
+                    <ol type="a">
+                        <li>
+                            <strong>Brain-inspired Adaptation Mechanism</strong>
+                            Build a dynamic learning framework based on spiking neural networks to achieve biological temporal encoding of equipment state perception and fault patterns, breaking through the limitations of traditional static models in characterizing the gradual deterioration of equipment.
+                        </li>
+                        <li>
+                            <strong>Multimodal Cognitive Architecture</strong>
+                            Develop a brain-inspired heterogeneous cognitive system that integrates visual, thermal, and electromagnetic sensing. Establish a dynamic knowledge graph containing various equipment characteristic parameters to support multi - dimensional state interpretation of key equipment such as transformers and GIS.
+                        </li>
+                        <li>
+                            <strong>Dynamic Knowledge Evolution</strong>
+                            Introduce an online learning mechanism driven by neural plasticity, enabling the robot system to continuously update the equipment deterioration model in complex scenarios such as UHV converter stations and adapt to the rapid development needs of the new - type power system.
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <strong>Methodological Innovation</strong>
+                    <ol type="a">
+                        <li>
+                            <strong>Neuromorphic Computing Engine</strong>
+                            Develop a dedicated brain - inspired chip that supports event - driven computing to achieve the low - power goal of substation/converter station inspection robots, meeting the 7×24 - hour continuous monitoring needs of outdoor equipment.
+                        </li>
+                        <li>
+                            <strong>Heterogeneous Computing Integration</strong>
+                            Construct a cognitive decision - making system with a hybrid ANN - SNN architecture. Compress the parameter scale of large models through pulse temporal encoding technology to achieve real - time response after the generation of control instructions.
+                        </li>
+                        <li>
+                            <strong>Biomechanical Coupling</strong>
+                            Develop a brain - inspired controller that mimics the motor control mechanism of the human cerebellum to improve the trajectory tracking accuracy of live - working robotic arms under strong electromagnetic interference, breaking through the stability bottleneck of traditional control in unstructured environments.
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <strong>Technological System Innovation</strong>
+                    <ol type="a">
+                        <li>
+                            <strong>Cross - modal Cognitive Interface</strong>
+                            Develop a brain - inspired sensing array that supports the coupled analysis of multiple physical fields to achieve synchronous detection and correlated reasoning of power signals such as SF6 gas leakage and partial discharge ultrasound.
+                        </li>
+                        <li>
+                            <strong>Autonomous Evolution System</strong>
+                            Construct a two - way optimization framework that mimics the brain's dopamine reward mechanism, enabling inspection robots to autonomously optimize path - planning algorithms when performing tasks such as temperature measurement of GIS equipment (with a task efficiency improvement of over 15%).
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <strong>Key Research Directions</strong>
+                    <ol type="i">
+                        <li>
+                            <strong>Cross - domain Mapping between Brain - inspired and Equipment Systems</strong>
+                            Solve the difficult problem of equivalent conversion between neural pulse encoding and equipment status parameters. Establish a library of pulse spatiotemporal patterns that includes multiple typical fault modes.
+                        </li>
+                        <li>
+                            <strong>Mechanism for Balancing Energy Efficiency and Accuracy</strong>
+                            Break through the mutually exclusive contradiction between brain - inspired sparse computing and detection accuracy. Control the power consumption of computing units within a few watts while maintaining a defect recognition rate of over 99%.
+                        </li>
+                        <li>
+                            <strong>Human - machine Hybrid Intelligence Enhancement</strong>
+                            Design a standard - compliant cognitive collaboration interface to achieve millisecond - level conversion of dispatchers' natural language instructions into brain - inspired control signals. Construct a closed - loop optimization system for human experts and machine intelligence.
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </section>
+
         <!-- 2025 Activities -->
-        <section class="bullet-section">
+        <section id="activities" class="bullet-section section">
             <h2>2025 Planned Activities</h2>
             <ul>
                 <li>IEEE Symposium on Robotic Intelligence in Informationally Structured Space (RiiSS 2025)
                     <ul>
-                        <li>Part of <a href="#">SSCI 2025</a></li>
+                        <li>Part of <a href="https://attend.ieee.org/ssci-2021/ieee-symposium-on-robotic-intelligence-in-informationally-structured-space-ieee-riiss/">SSCI 2025</a></li>
                     </ul>
                 </li>
                 <li>Technical committee meetings</li>
@@ -194,5 +376,9 @@
             </ul>
         </section>
     </div>
+    <footer>
+        &copy; 2025 IEEE CIS ISATC Robotics Task Force. All rights reserved.
+    </footer>
 </body>
+
 </html>
